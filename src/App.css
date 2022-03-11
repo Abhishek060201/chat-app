@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 8px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.join-chat-container {
+  padding: 0 20px;
+  width: 50%;
+  max-width: 500px;
+  border: 1px black solid;
+  border-radius: 5px;
+  background-color: white;
+}
+
+h3 {
+  padding: 10px;
+  margin: 20px 0;
+  text-align: center;
+  font-size: x-large;
+}
+
+.join-chat-container input {
+  margin: 20px 0;
+  height: 40px;
+  padding: 5px 10px;
+  font-size: large;
+  width: 100%;
+}
+
+.join-chat-container button {
+  margin: 20px 0;
+  cursor: pointer;
+  height: 40px;
+  padding: 1px 10px;
+  font-size: large;
+  width: 100%;
+  background-color: green;
+  color: white;
+}
+
+.join-chat-container button:hover {
+  background-color: rgb(0, 97, 0);
+}
+

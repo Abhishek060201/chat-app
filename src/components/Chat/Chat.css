@@ -1,0 +1,88 @@
+.chat-window {
+  border: 2px black solid;
+  width: 50%;
+  min-width: 345px;
+  border: 1px black solid;
+  border-radius: 5px;
+}
+
+.chat-header {
+  background-color: black;
+  color: white;
+  padding: 10px;
+}
+
+.scroll-to-bottom {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  padding: 5px;
+  background-color: white;
+}
+
+.message {
+  padding: 5px 10px;
+}
+
+#you {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
+.message-content {
+  font-size: large;
+  color: white;
+  display: inline-block;
+  padding: 5px;
+  border-radius: 5px;
+  align-self: flex-end;
+  max-width: 90%;
+  overflow-wrap: break-word;
+}
+
+#you .message-content{
+  background-color: rgb(79, 79, 233);
+}
+
+#other .message-content{
+  background-color: rgb(27, 128, 32);
+}
+
+.message-meta {
+  display: flex;
+}
+
+#you .message-meta {
+  justify-content: flex-end;
+}
+
+.message-meta p {
+  font-size: small;
+}
+
+#author {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.chat-footer input {
+  height: 40px;
+  padding: 5px 10px;
+  font-size: large;
+  width: 80%;
+  border-radius: 0 0 0 5px;
+}
+
+.chat-footer input:focus {
+  outline: gray;
+}
+
+.chat-footer button {
+  cursor: pointer;
+  height: 40px;
+  padding: 1px 10px;
+  font-size: large;
+  width: 20%;
+  border-radius: 0 0 5px 0;
+}

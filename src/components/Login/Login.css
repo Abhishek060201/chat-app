@@ -1,0 +1,9 @@
+.login {
+  min-width: 345px;
+  height: 90vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#888;
+}

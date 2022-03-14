@@ -1,40 +1,40 @@
-.signup {
+.join-chat {
+  min-width: 345px;
   height: 90vh;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color:#888;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
+
+.join-chat-container {
+  padding: 0 20px;
   width: 50%;
-  min-width: 345px;
+  max-width: 500px;
   border: 1px black solid;
-  background-color: white;
   border-radius: 5px;
+  background-color: white;
 }
 
-h2 {
+h3 {
+  padding: 10px;
+  margin: 20px 0;
   text-align: center;
+  font-size: x-large;
 }
 
-label {
-  font-size: larger;
-}
-
-input {
+.join-chat-container input {
+  margin: 20px 0;
   height: 40px;
   padding: 5px 10px;
   font-size: large;
-  border-radius: 5px;
+  width: 100%;
 }
 
-[type='submit'] {
-  margin-top: 30px;
+.join-chat-container button {
+  margin: 20px 0;
   cursor: pointer;
   height: 40px;
   padding: 1px 10px;
@@ -44,12 +44,6 @@ input {
   color: white;
 }
 
-[type='submit']:hover {
+.join-chat-container button:hover {
   background-color: rgb(0, 97, 0);
-}
-
-.response {
-  color: green;
-  text-align: center;
-  margin-top: 20px;
 }

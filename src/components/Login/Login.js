@@ -1,53 +1,56 @@
-import React, { useState } from 'react';
-import Chat from '../Chat/Chat';
-import io from 'socket.io-client';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import JoinChat from '../JoinChat/JoinChat';
 import './Login.css';
 
-const socket = io.connect('http://localhost:3001');
-
 const Login = () => {
-
+  const [loggedin, setLoggedin] = useState(false);
   const [username, setUsername] = useState('');
-  const [room, setRoom] = useState('');
-  const [showChat, setShowChat] = useState(false);
+  const [password, setPassword] = useState('');
 
-  const joinRoom = () => {
-    if (username !== '' && room !== '') {
-      socket.emit('join_room', room);
-      setShowChat(true);
+  const loginWithCreds = async (e) => {
+    e.preventDefault()
+    if (username !== '' && password !== '') {
+      const res = await axios.post('http://localhost:3001/login', {
+        username,
+        password
+      })
+      const accessToken = res.data.accessToken;
+      console.log('aCT:', accessToken)
     }
   }
 
   return (
-    <div className="login">
-      {!showChat ? (
-        <div className='join-chat-container'>
-          <h3>Join a chat</h3>
+    <div className='login'>
+      {!loggedin ? (
+        <form>
+          <h2>Login</h2>
+
+          <label>Username</label>
           <input
             type='text'
-            placeholder='John...'
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
+            name='username'
+            value={username}
+            placeholder='John'
+            onChange={(e) => setUsername(e.target.value)}
           />
+
+          <label>Password</label>
           <input
-            type='text'
-            placeholder='Room ID'
-            onChange={(event) => {
-              setRoom(event.target.value);
-            }}
+            type='password'
+            name='password'
+            value={password}
+            placeholder='Enter your password'
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <button onClick={joinRoom}>Join a Room</button>
-        </div>
+
+          <input type='submit' onClick={loginWithCreds} />
+        </form>
       ) : (
-        <Chat
-          socket={socket}
-          username={username}
-          room={room}
-        />
+        <JoinChat />
       )}
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;

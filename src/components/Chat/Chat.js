@@ -34,12 +34,10 @@ const Chat = ({ socket, username, room }) => {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      console.log('mS:', data);
       setMessageList(list => [...list, data]);
     })
 
     socket.on('receive_old_messages', (oldMessages) => {
-      console.log('oM:', oldMessages);
       setMessageList(oldMessages);
     })
   }, [socket])

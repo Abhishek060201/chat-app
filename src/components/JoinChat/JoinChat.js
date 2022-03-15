@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chat from '../Chat/Chat';
 import io from 'socket.io-client';
 import './JoinChat.css';
 
-const socket = io.connect('http://localhost:3001');
+var socket;
 
-const JoinChat = () => {
-
-  const [username, setUsername] = useState('');
+const JoinChat = (props) => {
+  const [username, setUsername] = useState(props.username);
   const [room, setRoom] = useState('');
   const [showChat, setShowChat] = useState(false);
+
+  useEffect(() => {
+    socket = io.connect('http://localhost:3001', {
+      query: {
+        token: props.accessToken
+      }
+    });
+  }, [props.accessToken])
 
   const joinRoom = () => {
     if (username !== '' && room !== '') {
@@ -23,13 +30,7 @@ const JoinChat = () => {
       {!showChat ? (
         <div className='join-chat-container'>
           <h3>Join a chat</h3>
-          <input
-            type='text'
-            placeholder='John...'
-            onChange={(event) => {
-              setUsername(event.target.value);
-            }}
-          />  
+          <h4>{username}</h4>
           <input
             type='text'
             placeholder='Room ID'

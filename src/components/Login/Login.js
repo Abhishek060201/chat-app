@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import JoinChat from '../JoinChat/JoinChat';
 import './Login.css';
 
 const Login = () => {
   const [loggedin, setLoggedin] = useState(false);
+  const [accessToken, setAccessToken] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const loginWithCreds = async (e) => {
     e.preventDefault()
@@ -14,9 +16,15 @@ const Login = () => {
       const res = await axios.post('http://localhost:3001/login', {
         username,
         password
+      }).then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          setLoggedin(true)
+          setAccessToken(res.data.accessToken)
+        }
+      }).catch(err => {
+        setErrorMessage(err.response.data)
       })
-      const accessToken = res.data.accessToken;
-      console.log('aCT:', accessToken)
     }
   }
 
@@ -45,9 +53,10 @@ const Login = () => {
           />
 
           <input type='submit' onClick={loginWithCreds} />
+          <h4 className='error-message'>{errorMessage}</h4>
         </form>
       ) : (
-        <JoinChat />
+        <JoinChat accessToken={accessToken} username={username} />
       )}
     </div>
   );

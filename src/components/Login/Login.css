@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.74), rgba(25, 9, 61, 0.849));
+  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.938), rgba(25, 9, 61, 0.925));
 }
 
 form {
@@ -15,7 +15,7 @@ form {
   width: 50%;
   min-width: 345px;
   border: 1px rgba(102, 85, 116, 0.74) solid;
-  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.856), rgba(25, 9, 61, 0.89));
+  background-image: linear-gradient(to right, rgba(25, 9, 61, 0.925), rgba(22, 3, 37, 0.938));
   border-radius: 5px;
 }
 

@@ -6,6 +6,32 @@ const Chat = ({ socket, username, room }) => {
 
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  const [alertMessage, setAlertMessage] = useState('');
+
+  useEffect(() => {
+    if (alertMessage !== '') {
+      const chatBox = document.querySelector('.scroll-to-bottom > div')
+      const messageBox = document.createElement('div')
+      const messageText = document.createTextNode(alertMessage)
+      messageBox.classList.add('alert-message')
+      messageBox.appendChild(messageText)
+      chatBox.appendChild(messageBox)
+    }
+  }, [alertMessage])
+
+  useEffect(() => {
+    socket.on('receive_message', (data) => {
+      setMessageList(list => [...list, data]);
+    })
+
+    socket.on('receive_old_messages', (oldMessages) => {
+      setMessageList(oldMessages);
+    })
+
+    socket.on('alert_message', async (message) => {
+      setAlertMessage(message)
+    })
+  }, [socket])
 
   const sendMessage = async () => {
     var hrs = new Date(Date.now()).getHours();
@@ -31,16 +57,6 @@ const Chat = ({ socket, username, room }) => {
       setCurrentMessage('');
     }
   }
-
-  useEffect(() => {
-    socket.on('receive_message', (data) => {
-      setMessageList(list => [...list, data]);
-    })
-
-    socket.on('receive_old_messages', (oldMessages) => {
-      setMessageList(oldMessages);
-    })
-  }, [socket])
 
   return (
     <div className='chat-window'>
@@ -80,11 +96,7 @@ const Chat = ({ socket, username, room }) => {
             }
           }}
         />
-        <button
-          onClick={sendMessage}
-        >
-          &#9658;
-        </button>
+        <button onClick={sendMessage}>&#9658;</button>
       </div>
     </div>
   )

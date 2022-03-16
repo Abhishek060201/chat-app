@@ -20,7 +20,7 @@ const JoinChat = (props) => {
 
   const joinRoom = () => {
     if (username !== '' && room !== '') {
-      socket.emit('join_room', room);
+      socket.emit('join_room', { room, username });
       setShowChat(true);
     }
   }

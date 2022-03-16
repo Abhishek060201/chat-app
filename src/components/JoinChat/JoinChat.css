@@ -1,21 +1,20 @@
 .join-chat {
+  color: white;
   min-width: 345px;
   height: 90vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#888;
 }
 
-
 .join-chat-container {
-  padding: 0 20px;
+  padding: 20px 20px;
   width: 50%;
   max-width: 500px;
   border: 1px black solid;
   border-radius: 5px;
-  background-color: white;
+  background-image: linear-gradient(to right, rgba(25, 9, 61, 0.849), rgba(22, 3, 37, 0.74));
 }
 
 h3 {
@@ -26,24 +25,34 @@ h3 {
 }
 
 .join-chat-container input {
-  margin: 20px 0;
+  color: white;
   height: 40px;
   padding: 5px 10px;
   font-size: large;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
   width: 100%;
+  border-bottom: gray 2px groove;
+}
+
+.join-chat-container input:focus {
+  outline: none;
+  border-bottom: white 1px groove;
 }
 
 .join-chat-container button {
-  margin: 20px 0;
+  margin-top: 30px;
   cursor: pointer;
   height: 40px;
   padding: 1px 10px;
   font-size: large;
   width: 100%;
-  background-color: green;
-  color: white;
+  color: white;  
+  border: none;
+  background-image: linear-gradient(to right, rgba(109, 13, 182, 0.897), rgba(49, 18, 119, 0.938));
 }
 
 .join-chat-container button:hover {
-  background-color: rgb(0, 97, 0);
+  background-image: linear-gradient(to right, rgba(109, 13, 182, 0.959), rgba(48, 18, 119, 0.979));
 }

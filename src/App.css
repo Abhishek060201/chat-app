@@ -19,12 +19,12 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.74), rgba(25, 9, 61, 0.849));
   border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background-image: linear-gradient(to right, rgba(30, 5, 49, 0.74), rgba(29, 12, 70, 0.849));
 }
 

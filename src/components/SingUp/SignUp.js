@@ -11,9 +11,9 @@ const SignUp = () => {
 
   useEffect(() => {
     if(updateError) {
-      document.querySelector('.response').style.color = 'red'
+      document.querySelector('.response').style.color = 'rgba(255, 68, 0, 0.699)'
     } else {
-      document.querySelector('.response').style.color = 'green'
+      document.querySelector('.response').style.color = 'rgb(112, 112, 199)'
     }
   }, [updateError])
 

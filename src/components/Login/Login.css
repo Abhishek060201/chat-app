@@ -1,10 +1,11 @@
 .login {
+  color: white;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color:#888;
+  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.74), rgba(25, 9, 61, 0.849));
 }
 
 form {
@@ -13,8 +14,8 @@ form {
   padding: 20px;
   width: 50%;
   min-width: 345px;
-  border: 1px black solid;
-  background-color: white;
+  border: 1px rgba(102, 85, 116, 0.74) solid;
+  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.856), rgba(25, 9, 61, 0.89));
   border-radius: 5px;
 }
 
@@ -27,10 +28,19 @@ label {
 }
 
 input {
+  color: white;
   height: 40px;
   padding: 5px 10px;
   font-size: large;
-  border-radius: 5px;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-bottom: gray 2px groove;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: white 1px groove;
 }
 
 [type='submit'] {
@@ -40,16 +50,16 @@ input {
   padding: 1px 10px;
   font-size: large;
   width: 100%;
-  background-color: green;
-  color: white;
+  color: white;  
+  background-image: linear-gradient(to right, rgba(109, 13, 182, 0.897), rgba(49, 18, 119, 0.938));
 }
 
 [type='submit']:hover {
-  background-color: rgb(0, 97, 0);
+  background-image: linear-gradient(to right, rgba(109, 13, 182, 0.959), rgba(48, 18, 119, 0.979));
 }
 
 .error-message {
-  color: red;
+  color: rgba(255, 68, 0, 0.699);
   text-align: center;
   margin-top: 20px;
 }

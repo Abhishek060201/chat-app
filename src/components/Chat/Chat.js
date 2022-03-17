@@ -53,7 +53,6 @@ const Chat = ({ socket, username, room }) => {
       setMessageList(list => [...list, messsageData]);
 
       //empty the chat-box input
-      document.querySelector('.chat-footer input').value = '';
       setCurrentMessage('');
     }
   }
@@ -86,6 +85,7 @@ const Chat = ({ socket, username, room }) => {
       <div className='chat-footer'>
         <input
           type='text'
+          value={currentMessage}
           placeholder='Hey...'
           onChange={(event) => {
             setCurrentMessage(event.target.value);

@@ -1,7 +1,11 @@
 Steps:
+  ######
   Signup - Create user by taking information like username, email and password.
+  ######
   Login - Only signed-up users will be able to login with their respective username and password.
+  ######
   Join Room - As soon as user enters correct login credentials, a signed JWT token is sent to the client and upon entering the room-id the JWT token is returned to the server and is verified and after authentication the user is allowed to enter the room.
+  ######
   Creating Server - Creating an http server with express, and passing it to the socket.io server for initial upgrade handshake. Then listen on the port 3001.
 ```
   const { Server } = require('socket.io')
@@ -65,13 +69,16 @@ Now we setup the mongoDB server to store the all the Users and the chats of each
 Now the server is configured.
 
 Packages Used:
+######
   Server side -
+  ######
     Express 
     Mongoose
     Socket.io
     JSONWebtokens
     dotenv
   Client side -
+  ######
     React
     Axios
     React-router-dom
@@ -79,9 +86,28 @@ Packages Used:
 
 
 References:
-  https://socket.io/docs/v4/ - Socket.io docs
+######
+  Socket-io - https://socket.io/docs/v4/ 
   ######
-  https://socket.io/get-started/chat - Real Chat App tutorial
-  https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt - How to implement JWT in websockets
+  RealTime Chat-App tutorial - https://youtu.be/NU-HfZY3ATQ
+  ######
+  How to implement JWT in websockets - https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt
+  ######
+  MongoDB - 
+  ```
+  https://www.youtube.com/watch?v=ofme2o29ngU
+  https://www.youtube.com/watch?v=DZBGEVgL2eE
+  ```
+  JWT - 
+  ```
+  https://www.youtube.com/watch?v=7Q17ubqLfaM
+  https://www.youtube.com/watch?v=mbsmsi7l3r4
+  ```
+  NodeJs and ExpressJs - 
+  ```
+  https://www.youtube.com/watch?v=TlB_eWDSMt4
+  https://youtu.be/L72fhGm1tfE
+  ```
+  
 
 

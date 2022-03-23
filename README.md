@@ -18,6 +18,7 @@ Then set the the socket server to listen to the connection event.
   }
 On the client side create a sendMessage function which would be called once the user enters a message and clicks the send button. (messageData is the message present in the input box).
 
+```
   const sendMessage = async () => {
   await socket.emit('send_message', messsageData);
        setMessageList(list => [...list, messsageData]);
@@ -25,6 +26,7 @@ On the client side create a sendMessage function which would be called once the 
        //empty the chat-box input
        setCurrentMessage('');
   }
+```
   
 On the server side listen to the ‘send_message’ and then broadcast it to the room the user has sent the message from. But before the we will verify the JWT token before the user connects to a room.
   io.use(function (socket, next) {

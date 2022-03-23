@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+Steps:
+  Signup - Create user by taking information like username, email and password.
+  Login - Only signed-up users will be able to login with their respective username and password.
+  Join Room - As soon as user enters correct login credentials, a signed JWT token is sent to the client and upon entering the room-id the JWT token is returned to the server and is verified and after authentication the user is allowed to enter the room.
+  Creating Server - Creating an http server with express, and passing it to the socket.io server for initial upgrade handshake. Then listen on the port 3001.
+  const { Server } = require('socket.io')
+  const io = new Server(server, {
+      cors: {
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST']
+      }
+  })
+  server.listen(3001, () => console.log('SERVER RUNNING'));
+  
+Then set the the socket server to listen to the connection event.
+  .on('connection', (socket) => {
+  console.log(socket.id, 'has Connected')
+  }
+On the client side create a sendMessage function which would be called once the user enters a message and clicks the send button. (messageData is the message present in the input box).
+  const sendMessage = async () => {
+  await socket.emit('send_message', messsageData);
+       setMessageList(list => [...list, messsageData]);
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+       //empty the chat-box input
+       setCurrentMessage('');
+  }
+On the server side listen to the ‘send_message’ and then broadcast it to the room the user has sent the message from. But before the we will verify the JWT token before the user connects to a room.
+  io.use(function (socket, next) {
+    if (socket.handshake.query && socket.handshake.query.token)  {
+     jwt.verify(socket.handshake.query.token, process.env.ACCESS_TOKEN_SECRET, function (err, decoded) {
+       if (err) return next(new Error('Authentication error'))
+            socket.decoded = decoded
+            next();
+        });
+    }
+    else {
+        next(new Error('Authentication error'))
+    }
+  })
+Now we setup the mongoDB server to store the all the Users and the chats of each room.
+  const url = process.env.ATLAS_URI
 
-## Available Scripts
+  mongoose.connect(url, (err) => {
+  if (err) return console.log(err)
+   console.log('Connected to Database')
+  })
 
-In the project directory, you can run:
+  const connection = mongoose.connection;
+  Now create user and chat schema
+  const url = process.env.ATLAS_URI
 
-### `npm start`
+  mongoose.connect(url, (err) => {
+   if (err) return console.log(err)
+   console.log('Connected to Database')
+  })
+ 
+  const connection = mongoose.connection;
+Now the server is configured.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Packages Used:
+  Server side -
+    Express 
+    Mongoose
+    Socket.io
+    JSONWebtokens
+    dotenv
+  Client side -
+    React
+    Axios
+    React-router-dom
+    Socke.io-client
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+References:
+  https://socket.io/docs/v4/ - Socket.io docs
+  https://socket.io/get-started/chat - Real Chat App tutorial
+  https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt - How to implement JWT in websockets
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -80,6 +80,7 @@ Packages Used:
 
 References:
   https://socket.io/docs/v4/ - Socket.io docs
+  -
   https://socket.io/get-started/chat - Real Chat App tutorial
   https://stackoverflow.com/questions/36788831/authenticating-socket-io-connections-using-jwt - How to implement JWT in websockets
 

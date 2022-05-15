@@ -11,7 +11,7 @@ const JoinChat = (props) => {
   const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
-    socket = io.connect('http://localhost:3001', {
+    socket = io.connect('https://abhishek-chat-app-backend.herokuapp.com', {
       query: {
         token: props.accessToken
       }

@@ -13,11 +13,10 @@ const Login = () => {
   const loginWithCreds = async (e) => {
     e.preventDefault()
     if (username !== '' && password !== '') {
-      const res = await axios.post('https://abhishek-chat-app-backend.herokuapp.com/login', {
+      await axios.post('https://abhishek-chat-app-backend.herokuapp.com/login', {
         username,
         password
       }).then(res => {
-        console.log(res)
         if (res.status === 200) {
           setLoggedin(true)
           setAccessToken(res.data.accessToken)

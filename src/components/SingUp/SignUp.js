@@ -20,7 +20,7 @@ const SignUp = () => {
   const signupWithCreds = async (e) => {
     e.preventDefault()
     if (username !== '' && email !== '' && password !== '') {
-      const res = await axios.post('https://abhishek-chat-app-backend.herokuapp.com/signup', {
+      const res = await axios.post('https://abhishek-chat-app-backend.vercel.app/signup', {
         username,
         email,
         password

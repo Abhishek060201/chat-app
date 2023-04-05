@@ -13,7 +13,7 @@ const Login = () => {
   const loginWithCreds = async (e) => {
     e.preventDefault()
     if (username !== '' && password !== '') {
-      await axios.post('https://abhishek-chat-app-backend.herokuapp.com/login', {
+      await axios.post('https://abhishek-chat-app-backend.vercel.app/login', {
         username,
         password
       }).then(res => {

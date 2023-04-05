@@ -11,7 +11,7 @@ const JoinChat = (props) => {
   const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
-    socket = io.connect('http://abhishek-chat-app-backend.vercel.app', {
+    socket = io.connect('https://abhishek-chat-app-backend.vercel.app', {
       query: {
         token: props.accessToken
       }

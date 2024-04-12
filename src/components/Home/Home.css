@@ -1,0 +1,19 @@
+.home {
+  background-image: linear-gradient(to right, rgba(22, 3, 37, 0.938), rgba(25, 9, 61, 0.925));
+  height: 90vh;
+}
+
+.home > div {
+  padding-top: 125px;
+  padding-left: 20px;
+}
+
+h1 {
+  color: white;
+  font-size: 100px;
+}
+
+p {
+  color: white;
+  font-size: 50px;
+}

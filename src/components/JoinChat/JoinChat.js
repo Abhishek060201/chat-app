@@ -6,7 +6,7 @@ import './JoinChat.css';
 var socket;
 
 const JoinChat = (props) => {
-  const [username, setUsername] = useState(props.username);
+  const [username] = useState(props.username);
   const [room, setRoom] = useState('');
   const [showChat, setShowChat] = useState(false);
 
